@@ -1,0 +1,1 @@
+Gonna be honest, a lot of things have gone over my head so far and I'm having a hard time understanding what's going on. I'll likely end up in the TA lab soon. But I do understand the basics of how Github is where I'll be saving my code to my startup, and how I need to back it up frequently.
