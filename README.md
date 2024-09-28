@@ -27,7 +27,7 @@ For this deliverable I built out the structure of my application using HTML.
 
 - [x] **HTML pages** - Four HTML pages that represent the login page, the play page, the leaderboard page, and the about page.
 - [x] **Links** - All the pages link to each other. Also, the about page has a link to the website of the game I am basing my startup on.
-- [x] **Text** - 
+- [x] **Text** - Text is inserted to provide instruction and guidance to the user.
 - [x] **Images** - I added an image on the about page to show what the board game looks like.
 - [x] **DB/Login** - There is a place to both login and create an account.
 - [x] **WebSocket** - The leaderboard as it is now represents how it will look when it updates in real time. (Also if I can figure it out, multiplayer between two different systems.)
