@@ -2,6 +2,7 @@ Ok so just today (9/27/24) was I just able to figure out how to push to github f
 1) cd to repository folder and type git add .
 2) type git commit -m "insert text here"
 3) type git push
+
 This is what my terminal looked like:
 (base) gagesmith@Gages-MacBook-Air-5 orbit_game % git add .
 (base) gagesmith@Gages-MacBook-Air-5 orbit_game % git commit -m "example 3"
