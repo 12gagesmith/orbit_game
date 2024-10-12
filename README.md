@@ -31,3 +31,13 @@ For this deliverable I built out the structure of my application using HTML.
 - [x] **Images** - I added an image on the about page to show what the board game looks like.
 - [x] **DB/Login** - There is a place to both login and create an account.
 - [x] **WebSocket** - The leaderboard as it is now represents how it will look when it updates in real time. (Also if I can figure it out, multiplayer between two different systems.)
+
+## CSS deliverable
+For this deliverable I properly styled the application into its (near) final appearance.
+
+- [x] **Header, footer, and main content body** - Yep, they're there.
+- [x] **Navigation elements** - I removed the bullet points and have them appear in a row.
+- [x] **Responsive to window resizing** - The app displays well on both my computer and my phone.
+- [x] **Application elements** - Used good contrast and whitespace
+- [x] **Application text content** - Used the same font for all text
+- [x] **Application images** - I used images I made in Canva to create the game board.
