@@ -13,6 +13,7 @@ html {
   
   header {
     background-color: #6aa;
+    padding: 0 1em;
   }
   
   menu {
@@ -37,4 +38,5 @@ html {
   
   footer {
     background-color: #6aa;
+    padding: 1em;
   }
