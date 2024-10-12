@@ -1,42 +1,42 @@
 html {
     height: 100%;
-  }
-  
-  body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: #bff;
-    font-family: verdana;
-  }
-  
-  header {
-    background-color: #6aa;
-    padding: 0 1em;
-  }
-  
-  menu {
-    flex: 1;
-    font-size: 20px;
-  
-    display: flex;
-    flex-direction: row;
-    align-items: right;
-    justify-content: space-around;
-  }
-  
-  main {
-    flex: 1;
-    font-size: 20px;
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  footer {
-    background-color: #6aa;
-    padding: 1em;
-  }
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #bff;
+  font-family: verdana;
+}
+
+header {
+  background-color: #6aa;
+  padding: 0 1em;
+}
+
+menu {
+  flex: 1;
+  font-size: 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+  justify-content: space-around;
+}
+
+main {
+  flex: 1;
+  font-size: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  background-color: #6aa;
+  padding: 1em;
+}
