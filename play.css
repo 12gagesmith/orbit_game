@@ -41,6 +41,10 @@ button {
     background-color: #f55;
 }
 
+.normal {
+    background-color: #eee;
+}
+
 table {
     background-color: #c11;
 }
