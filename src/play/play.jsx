@@ -7,7 +7,7 @@ export function Play() {
       <br />
       <div class="players">
         Players:
-        <span class="player-name">Mystery player 1, Mystery player 2</span>
+        <span class="player-name"> Mystery player 1, Mystery player 2</span>
       </div>
 
       <br />
@@ -32,7 +32,7 @@ export function Play() {
             </td>
             <td>
               <button>
-                <img src="public/slot_left_empty.png"></img>
+                <img src="public/slot_left_blue.png"></img>
               </button>
             </td>
             <td>
@@ -54,12 +54,34 @@ export function Play() {
             </td>
             <td>
               <button>
+                <img src="public/slot_down_white.png"></img>
+              </button>
+            </td>
+            <td>
+              <button>
+                <img src="public/slot_left_blue.png"></img>
+              </button>
+            </td>
+            <td>
+              <button>
+                <img src="public/slot_up_white.png"></img>
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button>
                 <img src="public/slot_down_empty.png"></img>
               </button>
             </td>
             <td>
               <button>
-                <img src="public/slot_left_empty.png"></img>
+                <img src="public/slot_right_empty.png"></img>
+              </button>
+            </td>
+            <td>
+              <button>
+                <img src="public/slot_up_white.png"></img>
               </button>
             </td>
             <td>
@@ -71,34 +93,12 @@ export function Play() {
           <tr>
             <td>
               <button>
-                <img src="public/slot_down_empty.png"></img>
-              </button>
-            </td>
-            <td>
-              <button>
                 <img src="public/slot_right_empty.png"></img>
               </button>
             </td>
             <td>
               <button>
-                <img src="public/slot_up_empty.png"></img>
-              </button>
-            </td>
-            <td>
-              <button>
-                <img src="public/slot_up_empty.png"></img>
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button>
-                <img src="public/slot_right_empty.png"></img>
-              </button>
-            </td>
-            <td>
-              <button>
-                <img src="public/slot_right_empty.png"></img>
+                <img src="public/slot_right_blue.png"></img>
               </button>
             </td>
             <td>

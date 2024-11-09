@@ -47,6 +47,12 @@ button {
 
 table {
     background-color: #c11;
+    border-spacing: 5px;
+}
+
+td {
+    border: 0px;
+    padding: 0px;
 }
 
 footer {
