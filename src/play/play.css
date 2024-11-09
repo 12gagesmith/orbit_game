@@ -36,7 +36,7 @@ main {
     justify-content: center;
 }
 
-button {
+.square {
     display: inline-block;
     background-color: #f55;
 }
@@ -50,7 +50,7 @@ table {
     border-spacing: 5px;
 }
 
-td {
+.slot {
     border: 0px;
     padding: 0px;
 }
