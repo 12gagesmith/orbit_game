@@ -7,8 +7,7 @@ export function About() {
       <p>
         Orbit Game, based on Orbito, is a game where you try to get four marbles of your color in a
         horizontal, vertical or diagonal row on a shifting game board. But watch out! At the end of
-        your turn, ALL marbles shift 1 position on their orbit! Moreover, you can also disrupt your
-        opponent's strategy by moving one of their marbles on your turn.
+        your turn, ALL marbles shift 1 position on their orbit!
       </p>
 
       <p>

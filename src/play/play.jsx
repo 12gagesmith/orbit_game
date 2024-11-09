@@ -11,130 +11,185 @@ function Square({value, onSquareClick}) {
 }
 
 export function Play() {
-  const player1 = "Mystery player 1"
-  const player2 = "Mystery player 2"
-  const currPlayer = player1
+  const player1 = "white"
+  const player2 = "blue"
+  const [currPlayer, setCurrPlayer] = useState(player1);
 
-  const [squares, setSquares] = useState(["public/slot_down_empty.png", "public/slot_left_empty.png", "public/slot_left_empty.png", "public/slot_left_empty.png", "public/slot_down_empty.png", "public/slot_down_empty.png", "public/slot_left_empty.png", "public/slot_up_empty.png", "public/slot_down_empty.png", "public/slot_right_empty.png", "public/slot_up_empty.png", "public/slot_up_empty.png", "public/slot_right_empty.png", "public/slot_right_empty.png", "public/slot_right_empty.png", "public/slot_up_empty.png"]);
+  const [squares, setSquares] = useState(["slot_down_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_down_empty.png", "slot_down_empty.png", "slot_left_empty.png", "slot_up_empty.png", "slot_down_empty.png", "slot_right_empty.png", "slot_up_empty.png", "slot_up_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_up_empty.png"]);
   const [whiteIsNext, setWhiteIsNext] = useState(true);
+
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = "Winner: " + winner + "!";
+  } else if (checkTie(squares)) {
+    status = "Tie Game"
+  } else {
+    status = "It's " + currPlayer + "'s turn."
+  }
 
   function orbit(currSquares) {
     const temp1 = currSquares[0]
     const temp2 = currSquares[5]
-    if (currSquares[1] == "public/slot_left_white") {
-      currSquares[0] = "public/slot_down_white"
-    } else if (currSquares[1] == "public/slot_left_blue") {
-      currSquares[0] = "public/slot_down_blue"
+    if (currSquares[1] == "slot_left_white.png") {
+      currSquares[0] = "slot_down_white.png"
+    } else if (currSquares[1] == "slot_left_blue.png") {
+      currSquares[0] = "slot_down_blue.png"
+    } else {
+      currSquares[0] = "slot_down_empty.png"
     }
-    if (currSquares[2] == "public/slot_left_white") {
-      currSquares[1] = "public/slot_left_white"
-    } else if (currSquares[2] == "public/slot_left_blue") {
-      currSquares[1] = "public/slot_left_blue"
+    if (currSquares[2] == "slot_left_white.png") {
+      currSquares[1] = "slot_left_white.png"
+    } else if (currSquares[2] == "slot_left_blue.png") {
+      currSquares[1] = "slot_left_blue.png"
+    } else {
+      currSquares[1] = "slot_left_empty.png"
     }
-    if (currSquares[3] == "public/slot_left_white") {
-      currSquares[2] = "public/slot_left_white"
-    } else if (currSquares[3] == "public/slot_left_blue") {
-      currSquares[2] = "public/slot_left_blue"
+    if (currSquares[3] == "slot_left_white.png") {
+      currSquares[2] = "slot_left_white.png"
+    } else if (currSquares[3] == "slot_left_blue.png") {
+      currSquares[2] = "slot_left_blue.png"
+    } else {
+      currSquares[2] = "slot_left_empty.png"
     }
-    if (currSquares[7] == "public/slot_up_white") {
-      currSquares[3] = "public/slot_left_white"
-    } else if (currSquares[7] == "public/slot_up_blue") {
-      currSquares[3] = "public/slot_left_blue"
+    if (currSquares[7] == "slot_up_white.png") {
+      currSquares[3] = "slot_left_white.png"
+    } else if (currSquares[7] == "slot_up_blue.png") {
+      currSquares[3] = "slot_left_blue.png"
+    } else {
+      currSquares[3] = "slot_left_empty.png"
     }
-    if (currSquares[11] == "public/slot_up_white") {
-      currSquares[7] = "public/slot_up_white"
-    } else if (currSquares[11] == "public/slot_up_blue") {
-      currSquares[7] = "public/slot_up_blue"
+    if (currSquares[11] == "slot_up_white.png") {
+      currSquares[7] = "slot_up_white.png"
+    } else if (currSquares[11] == "slot_up_blue.png") {
+      currSquares[7] = "slot_up_blue.png"
+    } else {
+      currSquares[7] = "slot_up_empty.png"
     }
-    if (currSquares[15] == "public/slot_up_white") {
-      currSquares[11] = "public/slot_up_white"
-    } else if (currSquares[15] == "public/slot_up_blue") {
-      currSquares[11] = "public/slot_up_blue"
+    if (currSquares[15] == "slot_up_white.png") {
+      currSquares[11] = "slot_up_white.png"
+    } else if (currSquares[15] == "slot_up_blue.png") {
+      currSquares[11] = "slot_up_blue.png"
+    } else {
+      currSquares[11] = "slot_up_empty.png"
     }
-    if (currSquares[14] == "public/slot_right_white") {
-      currSquares[15] = "public/slot_up_white"
-    } else if (currSquares[14] == "public/slot_right_blue") {
-      currSquares[15] = "public/slot_up_blue"
+    if (currSquares[14] == "slot_right_white.png") {
+      currSquares[15] = "slot_up_white.png"
+    } else if (currSquares[14] == "slot_right_blue.png") {
+      currSquares[15] = "slot_up_blue.png"
+    } else {
+      currSquares[15] = "slot_up_empty.png"
     }
-    if (currSquares[13] == "public/slot_right_white") {
-      currSquares[14] = "public/slot_right_white"
-    } else if (currSquares[13] == "public/slot_right_blue") {
-      currSquares[14] = "public/slot_right_blue"
+    if (currSquares[13] == "slot_right_white.png") {
+      currSquares[14] = "slot_right_white.png"
+    } else if (currSquares[13] == "slot_right_blue.png") {
+      currSquares[14] = "slot_right_blue.png"
+    } else {
+      currSquares[14] = "slot_right_empty.png"
     }
-    if (currSquares[12] == "public/slot_right_white") {
-      currSquares[13] = "public/slot_right_white"
-    } else if (currSquares[12] == "public/slot_right_blue") {
-      currSquares[13] = "public/slot_right_blue"
+    if (currSquares[12] == "slot_right_white.png") {
+      currSquares[13] = "slot_right_white.png"
+    } else if (currSquares[12] == "slot_right_blue.png") {
+      currSquares[13] = "slot_right_blue.png"
+    } else {
+      currSquares[13] = "slot_right_empty.png"
     }
-    if (currSquares[8] == "public/slot_down_white") {
-      currSquares[12] = "public/slot_right_white"
-    } else if (currSquares[8] == "public/slot_down_blue") {
-      currSquares[12] = "public/slot_right_blue"
+    if (currSquares[8] == "slot_down_white.png") {
+      currSquares[12] = "slot_right_white.png"
+    } else if (currSquares[8] == "slot_down_blue.png") {
+      currSquares[12] = "slot_right_blue.png"
+    } else {
+      currSquares[12] = "slot_right_empty.png"
     }
-    if (currSquares[4] == "public/slot_down_white") {
-      currSquares[8] = "public/slot_down_white"
-    } else if (currSquares[4] == "public/slot_down_blue") {
-      currSquares[8] = "public/slot_down_blue"
+    if (currSquares[4] == "slot_down_white.png") {
+      currSquares[8] = "slot_down_white.png"
+    } else if (currSquares[4] == "slot_down_blue.png") {
+      currSquares[8] = "slot_down_blue.png"
+    } else {
+      currSquares[8] = "slot_down_empty.png"
     }
-    if (temp1 == "public/slot_down_white") {
-      currSquares[4] = "public/slot_down_white"
-    } else if (temp1 == "public/slot_down_blue") {
-      currSquares[4] = "public/slot_down_blue"
+    if (temp1 == "slot_down_white.png") {
+      currSquares[4] = "slot_down_white.png"
+    } else if (temp1 == "slot_down_blue.png") {
+      currSquares[4] = "slot_down_blue.png"
+    } else {
+      currSquares[4] = "slot_down_empty.png"
     }
-    if (currSquares[6] == "public/slot_left_white") {
-      currSquares[5] = "public/slot_down_white"
-    } else if (currSquares[6] == "public/slot_left_blue") {
-      currSquares[5] = "public/slot_down_blue"
+    if (currSquares[6] == "slot_left_white.png") {
+      currSquares[5] = "slot_down_white.png"
+    } else if (currSquares[6] == "slot_left_blue.png") {
+      currSquares[5] = "slot_down_blue.png"
+    } else {
+      currSquares[5] = "slot_down_empty.png"
     }
-    if (currSquares[10] == "public/slot_up_white") {
-      currSquares[6] = "public/slot_left_white"
-    } else if (currSquares[10] == "public/slot_up_blue") {
-      currSquares[6] = "public/slot_left_blue"
+    if (currSquares[10] == "slot_up_white.png") {
+      currSquares[6] = "slot_left_white.png"
+    } else if (currSquares[10] == "slot_up_blue.png") {
+      currSquares[6] = "slot_left_blue.png"
+    } else {
+      currSquares[6] = "slot_left_empty.png"
     }
-    if (currSquares[9] == "public/slot_right_white") {
-      currSquares[10] = "public/slot_up_white"
-    } else if (currSquares[9] == "public/slot_right_blue") {
-      currSquares[10] = "public/slot_up_blue"
+    if (currSquares[9] == "slot_right_white.png") {
+      currSquares[10] = "slot_up_white.png"
+    } else if (currSquares[9] == "slot_right_blue.png") {
+      currSquares[10] = "slot_up_blue.png"
+    } else {
+      currSquares[10] = "slot_up_empty.png"
     }
-    if (temp2 == "public/slot_down_white") {
-      currSquares[9] = "public/slot_right_white"
-    } else if (temp2 == "public/slot_down_blue") {
-      currSquares[9] = "public/slot_right_blue"
+    if (temp2 == "slot_down_white.png") {
+      currSquares[9] = "slot_right_white.png"
+    } else if (temp2 == "slot_down_blue.png") {
+      currSquares[9] = "slot_right_blue.png"
+    } else {
+      currSquares[9] = "slot_right_empty.png"
     }
     return currSquares;
   }
   
   function handleSquareClick(i) {
     const nextSquares = squares.slice();
-    if (nextSquares[i] == "public/slot_down_empty.png" || nextSquares[i] == "public/slot_left_empty.png" || nextSquares[i] == "public/slot_up_empty.png" || nextSquares[i] == "public/slot_right_empty.png") {
+    if (calculateWinner(nextSquares)) {
+      return;
+    }
+    if (nextSquares[i].split("_")[2] == "empty.png") {
       if (i == 0 || i == 4 || i == 5 || i == 8) {
         if (whiteIsNext) {
-          nextSquares[i] = "public/slot_down_white.png";
+          nextSquares[i] = "slot_down_white.png";
         } else {
-          nextSquares[i] = "public/slot_down_blue.png";
+          nextSquares[i] = "slot_down_blue.png";
         }
       } else if (i == 1 || i == 2 || i == 3 || i == 6) {
         if (whiteIsNext) {
-          nextSquares[i] = "public/slot_left_white.png";
+          nextSquares[i] = "slot_left_white.png";
         } else {
-          nextSquares[i] = "public/slot_left_blue.png";
+          nextSquares[i] = "slot_left_blue.png";
         }
       } else if (i == 7 || i == 10 || i == 11 || i == 15) {
         if (whiteIsNext) {
-          nextSquares[i] = "public/slot_up_white.png";
+          nextSquares[i] = "slot_up_white.png";
         } else {
-          nextSquares[i] = "public/slot_up_blue.png";
+          nextSquares[i] = "slot_up_blue.png";
         }
       } else {
         if (whiteIsNext) {
-          nextSquares[i] = "public/slot_right_white.png";
+          nextSquares[i] = "slot_right_white.png";
         } else {
-          nextSquares[i] = "public/slot_right_blue.png";
+          nextSquares[i] = "slot_right_blue.png";
         }
       }
       setSquares(orbit(nextSquares))
       setWhiteIsNext(!whiteIsNext)
+      if (whiteIsNext) {
+        setCurrPlayer(player2)
+      } else {
+        setCurrPlayer(player1)
+      }
     }
+  }
+
+  function handlePlayAgain() {
+    setSquares(["slot_down_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_down_empty.png", "slot_down_empty.png", "slot_left_empty.png", "slot_up_empty.png", "slot_down_empty.png", "slot_right_empty.png", "slot_up_empty.png", "slot_up_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_up_empty.png"])
+    setCurrPlayer(player1)
   }
 
   return (
@@ -146,12 +201,9 @@ export function Play() {
       </div>
       <br />
       <div>
-        <label>It's {currPlayer}'s turn.</label>
+        <label>{status}</label>
       </div>
       <br />
-      <div>
-        Move your opponent's piece or <button className="normal">Skip</button>
-      </div>
       <br />
       <div>
         <table>
@@ -215,9 +267,42 @@ export function Play() {
       </div>
       <br />
       <div>
-        <button class="normal">Play Again</button>
+        <button class="normal" onClick={handlePlayAgain}>Play Again</button>
       </div>
       <br />
     </main>
   );
+}
+
+function checkTie(squares) {
+  for (let i = 0; i < squares.length; i++) {
+    if (squares[i].split("_")[2] == "empty.png") {
+      return null;
+    }
+  }
+  return true;
+}
+
+function calculateWinner(squares) {
+  const lines = [
+    [0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [8, 9, 10, 11],
+    [12, 13, 14, 15],
+    [0, 4, 8, 12],
+    [1, 5, 9, 13],
+    [2, 6, 10, 14],
+    [3, 7, 11, 15],
+    [0, 5, 10, 15],
+    [3, 6, 9, 12]
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c, d] = lines[i];
+    if (squares[a].split("_")[2] && squares[a].split("_")[2] === squares[b].split("_")[2] && squares[a].split("_")[2] === squares[c].split("_")[2] && squares[a].split("_")[2] === squares[d].split("_")[2]) {
+      if (squares[a].split("_")[2] != "empty.png") {
+        return squares[a].split("_")[2].split(".")[0];
+      }
+    }
+  }
+  return null;
 }
