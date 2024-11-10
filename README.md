@@ -41,3 +41,15 @@ For this deliverable I properly styled the application into its (near) final app
 - [x] **Application elements** - Used good contrast and whitespace
 - [x] **Application text content** - Used the same font for all text
 - [x] **Application images** - I used images I made in Canva to create the game board.
+
+## React deliverable
+
+For this deliverable I used JavaScript and React so that the game completely works for a single user. I also added placeholders for future technology.
+
+- [x] **Bundled and transpiled** - done!
+- [x] **Components** - Login, play, and scores have all been significantly updated.
+  - [x] **login** - I didn't have time to get login fully functioning, but I added the files needed. The actual login screen has placeholder buttons.
+  - [x] **play** - The game is fully functional, two people can play together on the same device.
+  - [x] **scores** - The table has been changed to accomodate rows being added. The game does not yet add to the table, but the table is ready for when I add that functionality.
+- [x] **Router** - Routing between components.
+- [x] **Hooks** - 'UseState' is used in the game to update the game board after each turn, as well as whose turn it is.
