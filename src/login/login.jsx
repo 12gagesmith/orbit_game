@@ -4,7 +4,7 @@ export function Login() {
   return (
     <main className='container-fluid bg-secondary text-center'>
       <h1>Welcome</h1>
-      <form method="get" action="play.html">
+      <form>
         <div>
           <input type="text" placeholder="your@email.com" />
         </div>
