@@ -14,6 +14,7 @@ export function Play() {
   const player1 = "white"
   const player2 = "blue"
   const [currPlayer, setCurrPlayer] = useState(player1);
+  const [turn, setTurn] = useState(0)
 
   const [squares, setSquares] = useState(["slot_down_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_down_empty.png", "slot_down_empty.png", "slot_left_empty.png", "slot_up_empty.png", "slot_down_empty.png", "slot_right_empty.png", "slot_up_empty.png", "slot_up_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_up_empty.png"]);
   const [whiteIsNext, setWhiteIsNext] = useState(true);
@@ -22,6 +23,7 @@ export function Play() {
   let status;
   if (winner) {
     status = "Winner: " + winner + "!";
+    saveScore(turn)
   } else if (checkTie(squares)) {
     status = "Tie Game"
   } else {
@@ -148,6 +150,9 @@ export function Play() {
   
   function handleSquareClick(i) {
     const nextSquares = squares.slice();
+    if (whiteIsNext) {
+      setTurn(turn + 1)
+    }
     if (calculateWinner(nextSquares)) {
       return;
     }
@@ -190,6 +195,22 @@ export function Play() {
   function handlePlayAgain() {
     setSquares(["slot_down_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_down_empty.png", "slot_down_empty.png", "slot_left_empty.png", "slot_up_empty.png", "slot_down_empty.png", "slot_right_empty.png", "slot_up_empty.png", "slot_up_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_up_empty.png"])
     setCurrPlayer(player1)
+    setWhiteIsNext(true)
+    setTurn(0)
+  }
+
+  async function saveScore(score) {
+    const date = new Date().toLocaleDateString();
+    const newScore = { name: userName, score: score, date: date };
+  
+    await fetch('/api/score', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newScore),
+    });
+  
+    // Let other players know the game has concluded
+    GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
   }
 
   return (
