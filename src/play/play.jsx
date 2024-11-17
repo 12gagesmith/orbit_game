@@ -11,9 +11,9 @@ function Square({value, onSquareClick}) {
 }
 
 export function Play() {
-  const player1 = "white"
-  const player2 = "blue"
-  const [currPlayer, setCurrPlayer] = useState(player1);
+  const userName = "white"
+  const userName2 = "blue"
+  const [currPlayer, setCurrPlayer] = useState(userName);
   const [turn, setTurn] = useState(0)
 
   const [squares, setSquares] = useState(["slot_down_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_down_empty.png", "slot_down_empty.png", "slot_left_empty.png", "slot_up_empty.png", "slot_down_empty.png", "slot_right_empty.png", "slot_up_empty.png", "slot_up_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_up_empty.png"]);
@@ -25,9 +25,9 @@ export function Play() {
     status = "Winner: " + winner + "!";
     saveScore(turn)
   } else if (checkTie(squares)) {
-    status = "Tie Game"
+    status = "Tie Game";
   } else {
-    status = "It's " + currPlayer + "'s turn."
+    status = "It's " + currPlayer + "'s turn.\nTurn " + turn;
   }
 
   function orbit(currSquares) {
@@ -150,13 +150,13 @@ export function Play() {
   
   function handleSquareClick(i) {
     const nextSquares = squares.slice();
-    if (whiteIsNext) {
-      setTurn(turn + 1)
-    }
     if (calculateWinner(nextSquares)) {
       return;
     }
     if (nextSquares[i].split("_")[2] == "empty.png") {
+      if (whiteIsNext) {
+        setTurn(turn + 1)
+      }
       if (i == 0 || i == 4 || i == 5 || i == 8) {
         if (whiteIsNext) {
           nextSquares[i] = "slot_down_white.png";
@@ -185,23 +185,23 @@ export function Play() {
       setSquares(orbit(nextSquares))
       setWhiteIsNext(!whiteIsNext)
       if (whiteIsNext) {
-        setCurrPlayer(player2)
+        setCurrPlayer(userName2)
       } else {
-        setCurrPlayer(player1)
+        setCurrPlayer(userName)
       }
     }
   }
 
   function handlePlayAgain() {
     setSquares(["slot_down_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_down_empty.png", "slot_down_empty.png", "slot_left_empty.png", "slot_up_empty.png", "slot_down_empty.png", "slot_right_empty.png", "slot_up_empty.png", "slot_up_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_up_empty.png"])
-    setCurrPlayer(player1)
+    setCurrPlayer(userName)
     setWhiteIsNext(true)
     setTurn(0)
   }
 
   async function saveScore(score) {
     const date = new Date().toLocaleDateString();
-    const newScore = { name: userName, score: score, date: date };
+    const newScore = { name: winner, score: score, date: date };
   
     await fetch('/api/score', {
       method: 'POST',
@@ -210,7 +210,7 @@ export function Play() {
     });
   
     // Let other players know the game has concluded
-    GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
+    //GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
   }
 
   return (
@@ -218,7 +218,7 @@ export function Play() {
       <br />
       <div className="players">
         Players:
-        <span className="player-name"> {player1}, {player2}</span>
+        <span className="player-name"> {userName}, {userName2}</span>
       </div>
       <br />
       <div>
@@ -288,7 +288,7 @@ export function Play() {
       </div>
       <br />
       <div>
-        <button class="normal" onClick={handlePlayAgain}>Play Again</button>
+        <button className="normal" onClick={handlePlayAgain}>Play Again</button>
       </div>
       <br />
     </main>

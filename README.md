@@ -53,3 +53,13 @@ For this deliverable I used JavaScript and React so that the game completely wor
   - [x] **scores** - The table has been changed to accomodate rows being added. The game does not yet add to the table, but the table is ready for when I add that functionality.
 - [x] **Router** - Routing between components.
 - [x] **Hooks** - 'UseState' is used in the game to update the game board after each turn, as well as whose turn it is.
+
+## Service deliverable
+
+For this deliverable I added backend endpoints that save a game's stats and post them to the leaderboard (score) table, as well as placeholders for the login users.
+
+- [x] **Node.js/Express HTTP service** - Done!
+- [x] **Static middleware for frontend** - Done!
+- [x] **Calls to third party endpoints** - Displays a quote on the about page.
+- [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for saving turn count and posting it to the leaderboard.
+- [x] **Frontend calls service endpoints** - I did this using the fetch function.

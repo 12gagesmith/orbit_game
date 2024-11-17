@@ -37,6 +37,12 @@ main {
     padding: 1em;
 }
 
+.quote_box {
+    padding: 0.5em;
+    border-radius: 5px;
+    background-color: #f55;
+}
+
 footer {
     background-color: #6aa;
     padding: 1em;

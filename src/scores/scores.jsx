@@ -17,9 +17,9 @@ export function Scores() {
     for (const [i, score] of scores.entries()) {
       scoreRows.push(
         <tr key={i}>
-          <td>{i}</td>
+          <td>{i + 1}</td>
           <td>{score.name.split('@')[0]}</td>
-          <td>{score.turns}</td>
+          <td>{score.score}</td>
           <td>{score.date}</td>
         </tr>
       );
@@ -27,7 +27,7 @@ export function Scores() {
   } else {
     scoreRows.push(
       <tr key='0'>
-        <td colSpan='4'>Be the first to finish a game</td>
+        <td colSpan='4'>Finish a game to see results</td>
       </tr>
     );
   }
