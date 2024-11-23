@@ -10,11 +10,15 @@ function Square({value, onSquareClick}) {
   );
 }
 
-export function Play() {
-  const userName = "white"
-  const userName2 = "blue"
+export function Play(props) {
+  const [userName, setUserName] = useState(props.userName);
+  const [userName2, setUserName2] = useState(userName + "'s guest");
+  if (userName == undefined) {
+    setUserName("white")
+    setUserName2("blue")
+  }
   const [currPlayer, setCurrPlayer] = useState(userName);
-  const [turn, setTurn] = useState(0)
+  const [turn, setTurn] = useState(1)
 
   const [squares, setSquares] = useState(["slot_down_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_down_empty.png", "slot_down_empty.png", "slot_left_empty.png", "slot_up_empty.png", "slot_down_empty.png", "slot_right_empty.png", "slot_up_empty.png", "slot_up_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_up_empty.png"]);
   const [whiteIsNext, setWhiteIsNext] = useState(true);
@@ -22,12 +26,12 @@ export function Play() {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = "Winner: " + winner + "!";
+    status = "Winner: " + winner + "! Turn " + turn;
     saveScore(turn)
   } else if (checkTie(squares)) {
-    status = "Tie Game";
+    status = "Tie Game. Turn " + turn;
   } else {
-    status = "It's " + currPlayer + "'s turn.\nTurn " + turn;
+    status = "It's " + currPlayer + "'s turn. Turn " + turn;
   }
 
   function orbit(currSquares) {
@@ -154,7 +158,7 @@ export function Play() {
       return;
     }
     if (nextSquares[i].split("_")[2] == "empty.png") {
-      if (whiteIsNext) {
+      if (!whiteIsNext) {
         setTurn(turn + 1)
       }
       if (i == 0 || i == 4 || i == 5 || i == 8) {
@@ -196,21 +200,20 @@ export function Play() {
     setSquares(["slot_down_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_left_empty.png", "slot_down_empty.png", "slot_down_empty.png", "slot_left_empty.png", "slot_up_empty.png", "slot_down_empty.png", "slot_right_empty.png", "slot_up_empty.png", "slot_up_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_right_empty.png", "slot_up_empty.png"])
     setCurrPlayer(userName)
     setWhiteIsNext(true)
-    setTurn(0)
+    setTurn(1)
   }
 
   async function saveScore(score) {
-    const date = new Date().toLocaleDateString();
-    const newScore = { name: winner, score: score, date: date };
-  
-    await fetch('/api/score', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(newScore),
-    });
-  
-    // Let other players know the game has concluded
-    //GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
+    if (userName != "white") {
+      const date = new Date().toLocaleDateString();
+      const newScore = { name: winner, score: score, date: date };
+    
+      await fetch('/api/score', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newScore),
+      });
+    }
   }
 
   return (
