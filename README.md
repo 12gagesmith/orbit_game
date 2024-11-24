@@ -63,3 +63,14 @@ For this deliverable I added backend endpoints that save a game's stats and post
 - [x] **Calls to third party endpoints** - Displays a quote on the about page.
 - [x] **Backend service endpoints** - Placeholders for login that stores the current user on the server. Endpoints for saving turn count and posting it to the leaderboard.
 - [x] **Frontend calls service endpoints** - I did this using the fetch function.
+
+## DB/Login deliverable
+
+For this deliverable I made it so a player's name is displayed when logged in, as well as their name being saved on the leaderboard (score) table after a game.
+
+- [x] **MongoDB Atlas database created** - done!
+- [x] **Stores data in MongoDB** - done!
+- [x] **User registration** - Creates a new account in the database.
+- [x] **Existing user** - When a user completes a game, their game stats are saved to the leaderboard next to their name.
+- [x] **Use MongoDB to store credentials** - Stores both users and their scores.
+- [x] **Restricts functionality** - You can play the game if you are not logged in, but it will not add to the leaderboard if you are not logged in. You also cannot view the leaderboard if not logged in.

@@ -26,7 +26,7 @@ export function Play(props) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = "Winner: " + winner + "! Turn " + turn;
+    status = "Winner: " + currPlayer + "! Turn " + turn;
     saveScore(turn)
   } else if (checkTie(squares)) {
     status = "Tie Game. Turn " + turn;
@@ -157,10 +157,13 @@ export function Play(props) {
     if (calculateWinner(nextSquares)) {
       return;
     }
+    if (!whiteIsNext) {
+      setCurrPlayer(userName2)
+      setTurn(turn + 1)
+    } else {
+      setCurrPlayer(userName)
+    }
     if (nextSquares[i].split("_")[2] == "empty.png") {
-      if (!whiteIsNext) {
-        setTurn(turn + 1)
-      }
       if (i == 0 || i == 4 || i == 5 || i == 8) {
         if (whiteIsNext) {
           nextSquares[i] = "slot_down_white.png";
@@ -188,11 +191,6 @@ export function Play(props) {
       }
       setSquares(orbit(nextSquares))
       setWhiteIsNext(!whiteIsNext)
-      if (whiteIsNext) {
-        setCurrPlayer(userName2)
-      } else {
-        setCurrPlayer(userName)
-      }
     }
   }
 
@@ -206,7 +204,7 @@ export function Play(props) {
   async function saveScore(score) {
     if (userName != "white") {
       const date = new Date().toLocaleDateString();
-      const newScore = { name: winner, score: score, date: date };
+      const newScore = { name: currPlayer, score: score, date: date };
     
       await fetch('/api/score', {
         method: 'POST',

@@ -29,7 +29,7 @@ export default function App() {
         </header>
 
         <Routes>
-        <Route
+          <Route
             path='/'
             element={
               <Login
@@ -43,7 +43,7 @@ export default function App() {
             }
             exact
           />
-          <Route path='/play' element={<Play />} />
+          <Route path='/play' element={<Play userName={userName.split('@')[0]}/>} />
           <Route path='/scores' element={<Scores />} />
           <Route path='/about' element={<About />} />
           <Route path='*' element={<NotFound />} />
