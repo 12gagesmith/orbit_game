@@ -2,7 +2,7 @@
   "name": "orbit_game",
   "version": "1.0.0",
   "description": "Ever want to play a fun simple game with your friends, but you're bored of all the ones you know? This is a game based on Orbito, which is a two-player board game similar to connect 4 or tic-tac-toe. The board is a 4x4 grid on which each person takes turns adding a marble of their color to a space on the board. The catch is that between each turn the marbles will move one space counterclockwise around the grid, so you will need to plan ahead of where the marbles will move to take victory. Will you go straight to trying for 4 in a row, or will you try to block your opponent? Grab a friend and have fun with this new innovative game! ### Design ![Orbito](https://target.scene7.com/is/image/Target/GUEST_4f57545d-9fa7-4ca4-b048-99b1e89becb7) This is a picture of the actual board game that I will be making digitally as my startup ### Key features - Simple instructions on how to play - An interactive board to play the game - Ability to start a new game when a game ends - A link to more detailed rules ### Technologies I am going to use the required technologies in the following ways: - **HTML** - Used to structure and organize my application - **CSS** - Used to make my game look nice and pretty - **JavaScript** - Used to make the game function on the backend - **React** - Used to help the game function (I've never used React before idk what its purpose is) - **Web Service** - Backend service with endpoints for:   - Linking to more detailed rules   - Probably something cool I've yet to learn about - **DB/Login** - Used to register people and keep track of how many wins/losses someone has - **WebSocket** - Used to connect with other players (I don't know how WebSocket works either)",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
-    "mongodb": "^6.10.0",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",

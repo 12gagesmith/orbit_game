@@ -6,10 +6,6 @@ const DB = require('./database.js');
 
 const authCookieName = 'token';
 
-// Create memory data structures
-let users = {};
-let scores = [];
-
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 // Parse JSON
