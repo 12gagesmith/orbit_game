@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { GameEvent, GameNotifier } from './gameNotifier';
 import './play.css'
 
 function Square({value, onSquareClick}) {
@@ -11,6 +12,7 @@ function Square({value, onSquareClick}) {
 }
 
 export function Play(props) {
+  GameNotifier.broadcastEvent(userName, GameEvent.Start, {});
   const [userName, setUserName] = useState(props.userName);
   const [userName2, setUserName2] = useState(userName + "'s guest");
   if (userName == undefined) {
@@ -199,6 +201,7 @@ export function Play(props) {
     setCurrPlayer(userName)
     setWhiteIsNext(true)
     setTurn(1)
+    GameNotifier.broadcastEvent(userName, GameEvent.Start, {});
   }
 
   async function saveScore(score) {
@@ -211,6 +214,8 @@ export function Play(props) {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(newScore),
       });
+
+      GameNotifier.broadcastEvent(userName, GameEvent.End, newScore);
     }
   }
 
