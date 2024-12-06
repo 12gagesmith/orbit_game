@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { GameEvent, GameNotifier } from './gameNotifier';
+import { Players } from './players';
 import './play.css'
 
 function Square({value, onSquareClick}) {
@@ -12,7 +13,6 @@ function Square({value, onSquareClick}) {
 }
 
 export function Play(props) {
-  GameNotifier.broadcastEvent(userName, GameEvent.Start, {});
   const [userName, setUserName] = useState(props.userName);
   const [userName2, setUserName2] = useState(userName + "'s guest");
   if (userName == undefined) {
@@ -221,15 +221,8 @@ export function Play(props) {
 
   return (
     <main className='container-fluid bg-secondary text-center'>
-      <br />
-      <div className="players">
-        Players:
-        <span className="player-name"> {userName}, {userName2}</span>
-      </div>
-      <br />
-      <div>
+      <Players userName={props.userName} />
         <label>{status}</label>
-      </div>
       <br />
       <br />
       <div>

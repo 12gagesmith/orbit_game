@@ -1,0 +1,30 @@
+.players {
+    flex: 1;
+    width: 100%;
+    padding: 0.5em;
+  }
+  
+  .player-name {
+    color: rgb(70, 120, 120);
+    margin: 0 0.25em;
+  }
+  
+  #player-messages {
+    padding-top: 0.25em;
+    opacity: 0.7;
+  }
+  
+  .event {
+    color: #f55;
+  }
+  
+  .player-event {
+    color: #f55;
+    margin: 0 0.25em;
+  }
+  
+  .system-event {
+    color: #f55;
+    margin: 0 0.25em;
+  }
+  
