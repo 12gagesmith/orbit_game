@@ -74,3 +74,12 @@ For this deliverable I made it so a player's name is displayed when logged in, a
 - [x] **Existing user** - When a user completes a game, their game stats are saved to the leaderboard next to their name.
 - [x] **Use MongoDB to store credentials** - Stores both users and their scores.
 - [x] **Restricts functionality** - You can play the game if you are not logged in, but it will not add to the leaderboard if you are not logged in. You also cannot view the leaderboard if not logged in.
+
+## WebSocket deliverable
+
+For this deliverable I used webSocket to show when another player starts/ends a game in real-time.
+
+- [x] **Backend listens for WebSocket connection** - done!
+- [x] **Frontend makes WebSocket connection** - done!
+- [x] **Data sent over WebSocket connection** - done!
+- [x] **WebSocket data displayed** - When a logged in player starts or finishes a game, it is displayed to other people on the play page.

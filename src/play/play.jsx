@@ -201,7 +201,9 @@ export function Play(props) {
     setCurrPlayer(userName)
     setWhiteIsNext(true)
     setTurn(1)
-    GameNotifier.broadcastEvent(userName, GameEvent.Start, {});
+    if (userName != "") {
+      GameNotifier.broadcastEvent(userName, GameEvent.Start, {});
+    }
   }
 
   async function saveScore(score) {
