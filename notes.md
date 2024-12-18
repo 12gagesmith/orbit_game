@@ -69,7 +69,7 @@ In the CSS box model, what is the ordering of the box layers starting at the ins
 Given the following HTML, what CSS would you use to set the text "trouble" to green and leave the "double" text unaffected? document.getElementById("””trouble’s id””").style.color = "green";
 What will the following code output when executed using a for loop and console.log?
 How would you use JavaScript to select an element with the id of “byu” and change the text color of that element to green? document.getElementById("byu").style.color = "green";
-What is the opening HTML tag for a paragraph, ordered list, unordered list, second level heading, first level heading, third level heading? <p>, <ol>, <ul>, <h2>, so forth
+What is the opening HTML tag for a paragraph, ordered list, unordered list, second level heading, first level heading, third level heading? p, ol, ul>, h2, so forth
 How do you declare the document type to be html?
 What is valid javascript syntax for if, else, for, while, switch statements?
 What is the correct syntax for creating a javascript object?
