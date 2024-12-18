@@ -110,3 +110,52 @@ for (let i = 0; i < 3; i++) {
 //   After promise 1
 //   In promise 2
 //   After promise 2
+
+
+
+Notes for the final:
+
+Default ports for...
+HTTP: 80
+HTTPS: 443
+SSH: 22
+
+HTTP status codes mean...
+300: Multiple Choices
+400: Bad Request
+500: Internal Server Error
+
+The HTTP header content-type allows you to indicate the original media type of a resource before any content encoding is applied.
+
+Secure cookie: Only sent to the server with an encrypted request over the HTTPS protocol
+HTTP-only cookie: Blocked from JavaScript and only is included in requests to the domain.
+Same-site cookie: Lets you declare whether your cookie is restricted to a first-party or same-site context.
+
+Websocket protocol is intended to provide clients and servers the ability to communicate in real time.
+
+Acronyms...
+JSX: JavaScript XML
+JS: JavaScript
+AWS: Amazon Web Services
+NPM: Node Package Manager
+NVM: Node Version Manager
+
+useState allows you to add a state to a variable, and update it.
+
+React Hooks are functions that let you "hook into" React state and lifecycle features from within function components. They were introduced in React 16.8 as a way to add state and other React features to functional components without having to convert them to class components.
+
+State hook lets a component "remember" information like user input.
+Context hook lets a component receive information from distant parents without passing it as props.
+Ref hook lets a component hold some information that isn't used for rendering, like a DOM node or a timeout ID.
+Effect hook lets a component connect to and synchronize with external systems.
+Performance hooks are a way of skipping unecessary calculations and re-rendering to improve performance.
+
+The package. json holds important information about the project. It contains human-readable metadata about the project (like the project name and description) as well as functional metadata like the package version number and a list of dependencies required by the application.
+
+The fetch function in JavaScript is used to make network requests, primarily to fetch resources from a server, such as data from an API.
+
+Node.js executes JavaScript code outside a web browser. Node.js lets developers use JavaScript to write command line tools and for server-side scripting.
+
+PM2 runs as a daemon on the server, making sure your app is available 24/7/365. You can check the status, logs, and metrics of your applications, and get an online dashboard.
+
+Vite helps developers build and develop front-end applications more quickly and efficiently. It serves code locally, bundles code for production, provides a fast dev server, etc.
